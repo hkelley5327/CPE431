@@ -1,0 +1,19 @@
+|race_lights
+clk_1Hz => green_count[0].CLK
+clk_1Hz => green_count[1].CLK
+clk_1Hz => state~3.DATAIN
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+reset => green_count[0].ENA
+reset => green_count[1].ENA
+start => state.OUTPUTSELECT
+start => state.OUTPUTSELECT
+start => state.OUTPUTSELECT
+start => state.OUTPUTSELECT
+red << red.DB_MAX_OUTPUT_PORT_TYPE
+yellow << yellow.DB_MAX_OUTPUT_PORT_TYPE
+green << green.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -8,10 +8,10 @@
 // Output:	red, yellow, and green lights (active high)
 // 
 // Name: Hannah Kelley
-// Due Date: 10/5/26
+// Due Date: 10/2/26
 //======================================================
 
-module race_lights(input wire clk, reset, start,
+module race_lights(input wire clk_1Hz, reset, start,
 						 output reg red, yellow, green);
 	
 	// states
@@ -21,57 +21,46 @@ module race_lights(input wire clk, reset, start,
 	parameter GREEN = 2'b11;
 	
 	reg [1:0] state;
-	reg [24:0] count; // log2(30mil) = 24.838
+	
+	reg [1:0] green_count; // log2(3) = 1.58
 	
 	// state and counter
-	always @(posedge clk) begin
+	always @(posedge clk_1Hz or posedge reset) begin
 		
 		if (reset) begin
 			
 			state <= RED;
-			count <= 0;
+			green_count <= 0;
 			
 		end else begin
 			
 			case(state)
 			
 				RED: begin
-					count <= 0;
 					if (start) begin
 						state <= RED_WAIT;
 					end
 				end
 				
 				RED_WAIT: begin
-					if (count == 25'd9999999) begin
-						count <= 0;
-						state <= YELLOW;
-					end else begin
-						count <= count + 1;
-					end
+					state <= YELLOW;
 				end
 				
 				YELLOW: begin
-					if (count == 25'd9999999) begin
-						count <= 0;
-						state <= GREEN;
-					end else begin
-						count <= count + 1;
-					end
+					state <= GREEN;
 				end
 				
 				GREEN: begin
-					if (count == 25'd29999999) begin
-						count <= 0;
+					if (green_count == 2'd2) begin
+						green_count <= 0;
 						state <= RED;
 					end else begin
-						count <= count + 1;
+						green_count <= green_count + 1;
 					end
 				end
 				
 				default: begin
 					state <= RED;
-					count <= 0;
 				end
 			
 			endcase
@@ -97,7 +86,7 @@ module race_lights(input wire clk, reset, start,
 				yellow = 1;
 				
 			GREEN:
-				green = 1s;
+				green = 1;
 			
 		endcase
 		
@@ -105,6 +94,27 @@ module race_lights(input wire clk, reset, start,
 
 endmodule
 
-// TO DO: clock divider
-// this may change how the clock works in other modules
-// make sure to use the 324 lab board (DE2-115)
+// clock divider with 50% duty cycle, 1s period
+// 10MHz => 1 Hz
+module clock_divider (input wire clk_10MHz, reset, 
+							 output reg clk_1Hz);
+
+	reg [22:0] count; // log2(5,000,000) = 22.25
+	
+	always @(posedge clk_10MHz) begin
+		
+		if (reset) begin
+			count <= 0;
+			clk_1Hz <= 0;
+		end else begin
+			if (count == 23'd4999999) begin // half a second is 5,000,000 cycles at 10MHz
+				count <= 0;
+				clk_1Hz <= ~clk_1Hz; // toggle clock
+			end else begin
+				count <= count + 1;
+			end
+		end
+		
+	end
+
+endmodule

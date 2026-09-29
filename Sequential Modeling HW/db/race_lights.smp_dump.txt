@@ -1,0 +1,7 @@
+
+State Machine - |race_lights|state
+Name state.GREEN state.YELLOW state.RED_WAIT state.RED 
+state.RED 0 0 0 0 
+state.RED_WAIT 0 0 1 1 
+state.YELLOW 0 1 0 1 
+state.GREEN 1 0 0 1 

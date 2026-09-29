@@ -1,0 +1,19 @@
+C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/race_lights_tb.v {1 {vlog -work work -vopt -stats=none C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/race_lights_tb.v
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+** Note: (vlog-220) 'C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/seq_mod_questa.mpf' is used as the ini file.
+-- Compiling module race_lights_tb
+
+Top level modules:
+	race_lights_tb
+
+} {} {}} C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/race_lights.v {1 {vlog -work work -vopt -stats=none C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/race_lights.v
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+** Note: (vlog-220) 'C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/seq_mod_questa.mpf' is used as the ini file.
+-- Compiling module race_lights
+-- Compiling module clock_divider
+
+Top level modules:
+	race_lights
+	clock_divider
+
+} {} {}}

@@ -1,0 +1,3 @@
+Info (10281): Verilog HDL Declaration information at race_lights.v(15): object "red" differs only in case from object "RED" in the same scope File: C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/race_lights.v Line: 15
+Info (10281): Verilog HDL Declaration information at race_lights.v(15): object "yellow" differs only in case from object "YELLOW" in the same scope File: C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/race_lights.v Line: 15
+Info (10281): Verilog HDL Declaration information at race_lights.v(15): object "green" differs only in case from object "GREEN" in the same scope File: C:/Users/hanna/OneDrive/Documents/CPE431/SequentialModeling/race_lights.v Line: 15
