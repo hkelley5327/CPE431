@@ -1,0 +1,8 @@
+//======================================================
+// File: Adder_mealy.v
+// Description: Structural Verilog model of a Mealy
+//              sequential adder using logic primitives
+//              and a D flip-flop
+// Name: Hannah Kelley
+// Due Date: 2/19/2026
+//======================================================
